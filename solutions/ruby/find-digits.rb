@@ -1,13 +1,7 @@
 def find_digits(number)
   digits = number.chars.map(&:to_i)
-  result = 0
 
-  digits.each do |digit|
-    next if digit == 0
-    result += 1 if number.to_i % digit == 0
-  end
-
-  result
+  result = digits.reject{|digit| digit == 0 }.inject(0) { |result, digit| result += 1 if number.to_i % digit == 0 }
 end
 
 p find_digits("12")
