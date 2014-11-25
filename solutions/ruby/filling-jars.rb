@@ -1,14 +1,10 @@
 # Enter your code here. Read input from STDIN. Print output to STDOUT
-#
-starting_parameters = gets.split(' ').map(&:to_i)
-no_of_operations = starting_parameters[1]
-total = 0
 
-no_of_operations.times do
-  operation = gets.split(' ').map(&:to_i)
-  starting_index = operation[0]
-  ending_index = operation[1]
-  total += (ending_index - starting_index + 1) * operation[2]
+no_of_jars, no_of_operations = gets.split(' ').map(&:to_i)
+total =  no_of_operations.times.inject(0) do |total|
+  starting_index, ending_index, no_of_candies = gets.split(' ').map(&:to_i)
+  total += (ending_index - starting_index + 1) * no_of_candies
 end
 
-puts total/starting_parameters[0]
+puts total/no_of_jars
+
